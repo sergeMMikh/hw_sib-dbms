@@ -110,7 +110,7 @@ db=# select * from pg_authid;
 
 1. Какие методы аутентификации используются для подключения по TCP/IP с адресов 127.0.0.1/32 и ::1/128?
 Метод аутентификации: `trust`
-![localhost ayth](image.png)
+![localhost ayth](img/image.png)
 
 
 2. Какие методы аутентификации используются для подключения по TCP/IP со всех остальных адресов, кроме указанных в предыдущем пункте по протоколу?
@@ -118,16 +118,16 @@ db=# select * from pg_authid;
 Это значит:
 * требуется пароль
 * используется MD5-хэш (старый способ)
-![all auth](image-1.png)
+![all auth](img/image-1.png)
 
 
 3. Верно ли утверждение: пароль роли `app` хранится в виде `функция_хеширования password` (пароль хранится в поле `rolpassword`)? Если не верно, то приведите описание алгоритма, который используется для хранения хеша.
 Пароль `app` хранится в поле `rolpassword` в виде хэша, но этот хеш создан как комбинация <пароль> + <имя пользователя>. 
-![app-passwd-hesh](image-2.png)
+![app-passwd-hesh](img/image-2.png)
 
 4. Какое значение имеют поля `rolsuper`, `rolcreaterole`, `rolcreatedb`, `rolbypassrls` с указанием назначения данных столбцов? `t` будет означать «да», `f` — «нет». См. https://postgrespro.ru/docs/postgresql/12/catalog-pg-authid.
 Все поля имеют значение `true`
-![app-fields-1](image-3.png)
+![app-fields-1](img/image-3.png)
 
 5. Почему значения полей `rolcanlogin` и `rolpassword` для роли `app` не изменились, и вы по-прежнему можете подключиться с помощью `psql` без указания пароля, хотя в `pg_hba.conf` для `host all all all` указано `reject`?
 
@@ -135,10 +135,10 @@ db=# select * from pg_authid;
 Добавил переменную окружения `POSTGRES_HOST_AUTH_METHOD=reject` 
 
 Проверил что в конфигурации сменился тип плдключения на `reject`
-![reject-4-all]](image-5.png)
+![reject-4-all]](img/image-5.png)
 
 Да, для `app` ничего не изменилось
-![reject-4-app](image-6.png)
+![reject-4-app](img/image-6.png)
 
 Причина такого конфуза в том, что выше описаны правила подключения для localhost, и до all проверке доходить не обязательно.
 
@@ -458,4 +458,4 @@ ERROR:  ???
 
 После того, как права у роли были отозваны, чтение таблицы стало невозможным.
 
-![records-user](image-7.png)
+![records-user](img/image-7.png)
