@@ -126,7 +126,14 @@ db=# select * from pg_authid;
 ![app-passwd-hesh](image-2.png)
 
 4. Какое значение имеют поля `rolsuper`, `rolcreaterole`, `rolcreatedb`, `rolbypassrls` с указанием назначения данных столбцов? `t` будет означать «да», `f` — «нет». См. https://postgrespro.ru/docs/postgresql/12/catalog-pg-authid.
+Все поля имеют значение `true`
+![app-fields-1](image-3.png)
+
 5. Почему значения полей `rolcanlogin` и `rolpassword` для роли `app` не изменились, и вы по-прежнему можете подключиться с помощью `psql` без указания пароля, хотя в `pg_hba.conf` для `host all all all` указано `reject`?
+
+
+Добавил переменную окружения `POSTGRES_HOST_AUTH_METHOD=reject` 
+
 
 ---
 
