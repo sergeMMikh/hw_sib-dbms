@@ -161,7 +161,15 @@ db=# select * from pg_authid;
 
 ## Решение
 
+Для решения задания пришлось вместо сысылки воспользоваться [документом](https://paper.bobylive.com/Security/CIS/CIS_PostgreSQL_12_Benchmark_v1_0_0.pdf) 
 
+1. Какие методы **не рекомендуется** использовать для удалённых подключений?
+
+	*trust*,	*password* и *ident* 
+
+2. Какие методы **рекомендуется** использовать для удалённых подключений?
+
+*scram-sha-256*, *gss*,	*sspi*,	*pam*,	*ldap*,	*radius*	и	*cert*
 
 ---
 
